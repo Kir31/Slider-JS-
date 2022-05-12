@@ -31,6 +31,46 @@ body {
 }
 
 .box {
+    display: flex;
+    justify-content: space-between;
     padding: 1% 0;
-    font-size: 1em;
+    font-size: 1.2em;
 }
+
+ol {
+    display: flex;
+    justify-content: space-around;
+    width: 15%;    
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    width: 30px;
+    height: 30px;  
+    padding: 5px;
+    list-style: none;  
+    transition: all 0.4s ease-in-out;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li:hover .dot {
+    background-color: #cac705;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;   
+    border-radius: 50%;
+    background-color: #086177;
+    opacity: 0.6;
+}
+
+li.active .dot{
+    opacity: 1;
+}
+
+
