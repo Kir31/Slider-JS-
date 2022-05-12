@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url(./assets/fonts/SourceSansPro-Regular.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;    
+}
+
+.container {
+    max-width: 1280px;
+    min-width: 320px;
+    margin: 0 auto;
+    padding: 1.5% 3%;
+}
+
+.wrapper-slides {
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slides {
+    display: flex;
+    transition: all 1s ease-in-out;
+}
+
+.box {
+    padding: 1% 0;
+    font-size: 1em;
+}
