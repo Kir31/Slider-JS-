@@ -25,7 +25,16 @@ body {
     margin: 0 auto;
 }
 
-.slides {
+.wrapper-text {
+    
+    overflow: hidden;    
+}
+
+.text-item {    
+    white-space: nowrap;
+}
+
+.slides, .text {
     display: flex;
     transition: all 1s ease-in-out;
 }
@@ -48,6 +57,7 @@ ol {
 li {
     width: 30px;
     height: 30px;  
+    border-radius: 50%;
     padding: 5px;
     list-style: none;  
     transition: all 0.4s ease-in-out;
@@ -69,8 +79,29 @@ li:hover .dot {
     opacity: 0.6;
 }
 
-li.active .dot{
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #cac705;;
+    }
+}
+
+li.active .dot {    
+    opacity: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1em rgba(255, 255, 255, 0);
+    animation: pulse 1s;
+}
+
+/* li.active .dot {
     opacity: 1;
 }
+.mousedown {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #b410417a;
+    border-radius: 50%;
+    z-index: 1;
+} */
 
 
