@@ -1,1 +1,1 @@
-# https://kir31.github.io/cssMemSlider/cssMemSlider/
+# https://Kir31.github.io/cssMemSlider/cssMemSlider/
