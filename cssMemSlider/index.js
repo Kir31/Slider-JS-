@@ -7,37 +7,32 @@ const textItems = document.querySelectorAll('.text-item');
 const textWrapper = document.querySelector('.wrapper-text');
 
 let slideWidth;
-let slideIndex = 0;
-let offset = 0;
-
 let textWidth;
-let textIndex = 0;
-let textOffset = 0;
+let slideIndex = 0;
 
 function loadSlider() {
-    slideWidth = window.getComputedStyle(slidesWrapper).width;
-    slides.style.width = 100 * images.length + '%';
+    slideWidth = slidesWrapper.offsetWidth;
+    slides.style.width = slideWidth * images.length + 'px';
     images.forEach(slide => {
-        slide.style.width = slideWidth;
+        slide.style.width = slideWidth + 'px';
         slide.style.height = 'auto';
     })
+    slides.style.transform = `translateX(-${slideWidth * slideIndex}px)`;    
+}
+
+function loadText() {
+    textWidth = textWrapper.offsetWidth;
+    text.style.width = textWidth * images.length + 'px';
+    textItems.forEach(item => {
+        item.style.width = textWidth + 'px';
+        item.style.height = 'auto';
+    })
+    text.style.transform = `translateX(-${textWidth * slideIndex}px)`;
 }
 
 window.addEventListener('resize', loadSlider);
-
-loadSlider();
-
-function loadText() {
-    textWidth = window.getComputedStyle(textWrapper).width;
-    text.style.width = 100 * images.length + '%';
-    textItems.forEach(item => {
-        item.style.width = textWidth;
-        item.style.height = 'auto';
-    })
-}
-
 window.addEventListener('resize', loadText);
-
+loadSlider();
 loadText()
 
 const dots = []; 
@@ -54,12 +49,9 @@ dots[slideIndex].classList.add('active');
 
 dots.forEach(dot => dot.addEventListener('click', () => {
     const slide = dot.getAttribute('data-slide');
-    slideIndex = slide;
-    textIndex = slide;
-    offset = +slideWidth.slice(0, slideWidth.length - 2) * slide;
-    textOffset = +textWidth.slice(0, textWidth.length - 2) * slide;
-    slides.style.transform = `translateX(-${offset}px)`;
-    text.style.transform = `translateX(-${textOffset}px)`;
+    slideIndex = slide;       
+    slides.style.transform = `translateX(-${slideWidth * slide}px)`;
+    text.style.transform = `translateX(-${textWidth * slide}px)`;
     dots.forEach(dot => dot.classList.remove('active'));
     dots[slideIndex].classList.add('active');  
 }))
